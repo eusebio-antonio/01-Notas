@@ -1,0 +1,55 @@
+CTRL+H Buscar ficheros
+shift+cmd+R Búsqueda de recursos
+— Ver process\
+
+Git integrado en eclipse
+/*****************************************************/
+Windows/Show view/Git repositories
+
+Importar proyecto a workspace
+/*****************************************************/
+Botón derecho/Import/Import/Maven/Existing Maven Projects
+
+/*****************************************************/
+Subir memoria a Eclipse. MAC
+Una vez instalado Eclipse hay que aumentarle la cantidad de memoria que tiene reservada por defecto.
+
+Esto se consigue accediendo al archivo eclipse.ini en:
+Partiendo de la carpeta donde está el eclipse -> Click derecho a la app -> Mostrar contenido del paquete.
+Una vez dentro, navegamos a través de Contents -> MacOS.
+
+Abriendo el archivo con un editor de textos como puede ser el TextEdit, tenemos que aumentar los valores de:
+--launcher.XXMaxPermSize
+4096m
+.
+.
+.
+-Xms2048m
+-Xmx4096m
+/*****************************************************/
+Plugin Maven ANFIX
+Los enlaces de los Plugins que hay que instalar ya no son los del vídeo, son los siguientes: 
+http://subclipse.tigris.org/update_1.6.x
+
+http://repository.sonatype.org/content/repositories/forge-sites/m2e/0.12.1/S/0.12.1.20110112-1712/
+
+https://repository.sonatype.org/content/repositories/forge-sites/m2e-extras/0.12.1/N/0.12.1.201011031403/
+
+https://repository.sonatype.org/content/repositories/forge-sites/m2eclipse-subclipse/0.12.1/N/0.12.1.201101251309/
+(para este último hay deshabilitar la opción "Group Items by Category")
+
+https://repository.sonatype.org/content/repositories/forge-sites/m2eclipse-wtp/0.12.0/N/0.12.0.201104211003/
+/*****************************************************/
+
+
+
+
+Control Git desde Eclipse
+/*****************************************************/
+
+Seleccionar repositorio\Borrar (Borra repo local)
+
+Seleccionar Repositorio: Fetch from Upstream Refresca las ramas del repositorio.
+Desde la ventana de Git repositories
+Seleccionar Remote Tracking\Checkout (Trae rama a local)
+Desde workspace\Import\Maven Exist proyecto (Buscar en path local).

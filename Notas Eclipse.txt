@@ -1,0 +1,70 @@
+Componentes adicionales
+------------------------------------/Users/usemac/Documents/01 Anfix/01 Notas/Notas Eclipse.txt----------------------------
+*Dynamic Web proyect: Desde help/Install New Software--> Buscar dentro de la sección Web XML JAVA EE:
+    -Eclipse Java EE Developer Tools.
+    -Eclipse Java Web Developer Tools.
+    -Eclipse Web Developers Tools.
+    -Eclipse XML Editors ad tools.
+    
+* WTP (Tomcat integration)
+Install/Update, añadir repositorio, último es versión
+http://download.eclipse.org/webtools/repository/mars/
+Configurar TOMCAT
+- Mostramos la vista server-
+- En server. New Server.
+- Localizamos el servidor APACHE
+- Ponemos el nombre, path y le JRE selecionamos del de sistema JRE7, no el Workbech default. Finalizar asistente.
+- Botón derecho propiedades. Botón derecho, botón Switch Location. Para que lo añada a la vista Proyect Explorer.
+- Seleccionamos doble click el server en Proyect Explorer\Servers.
+    - Revisamos el puerto 8080.
+    - En Server Locations. Seleccinamos 2 opción (Use Tomcat Instalation).
+- Arrancamos el server en la vista server. (Revisar consola).
+- Cargamos la perspectiva Web para verlo desde Eclipse. Sino en Windows\Perspective la añadimos.
+
+
+
+
+
+Referencias libreria JAR al proyecto
+------------------------------------
+1º Copiar las librerias a la carpeta lib del proyecto (CRL+C,CRL+V).
+2º Botón derecho proyecto, build path\Configure Path. Solapa libreria. Add JAR, selecionamos el JAR dentro del lib del proyecto.
+
+
+
+
+Importaciones revisadas y comentario
+----------------------------------------------------------------
+import java.util.Scanner; <-- Permite obtener datos de pantalla.
+import java.util.ArrayList; <-- Creación de arrays.
+
+
+
+Debug Eclipse
+---------------------
+Desde la perspectiva Debug (Se pueden añadir o borrar perspectivas con el botón open perspective).
+Teclas:
+    F5. Entrar en todo el código. No usar cuando se crea una clase, pues entra al constructor.
+    F6. Paso a paso sin entrar.
+    F8. Salto al siguiente breakpoint.
+Las ventanas más interesantes en la face debug son:
+    Source. Código, donde se va debugando el programa.
+    Expressions. Son las variables y/o expresiones que se van añadiendo con Watch.
+    Debug. En que clase está actualmente el Source. (Monitor de gerarquía de clases).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,53 @@
+Pasos crear nuevo proyecto Struct2 usando maven desde eclipse
+Descomprimir en /opt/apps/apache-maven-ver
+Crear ln -s apache-maven
+Añadir al path:/M2_HOME/bin
+https://www.youtube.com/watch?v=Zc2Vkk8KDhE
+-------------------------------------------------------------
+
+-Nuevo proyecto. Tipo, filtramos Maven proyect.
+-En filtro, buscamos Webapp (Maven archetype webapp), y seleccionamos Maven.
+-Group ID: com.tipo
+-Artefact ID: Nombre del proyecto. 
+-Package: war y finalizar asistente.
+
+Proyecto creado
+----------------------------------------------------------------------------------
+-Create src/main/java y refrescar proyecto, para que aparezca en Java Resources la carpeta.
+-src/main/webapp/WEB-INF/web.xml. Añadir filtros Struct2
+-pom.xml. Añadir dependencias apache stuct Y javax.servlet.
+<dependency>
+    <groupId>org.apache.struts</groupId>
+    <artifactId>struts2-core</artifactId>
+    <version>2.3.4.1</version>
+</dependency> 
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>3.1.0</version>
+    <scope>provided</scope>
+</dependency>
+<-- Refrescamos y salvamos proyecto.
+-Proyecto, RUN AS: Maven Install Crea y descarga las dependencias.
+-Modificamos la pagina index.jsp. Añadimos la Taglib uri=/struts-tags para que permita utilizar etiquetas struts.
+-/main/java New java class. Class User.
+    -Creamos la propiedades privadas de la clase.
+    -Creamos los get y set.
+    -Creamos la Generate toString.
+-/main/java New Java Class. UseAcction.
+    -private User user; <-- Importamos la clase.
+    -Get and set.
+    -Creamos el método publico: public String execute(){return "success";}
+-Empaquetar propiedades en la carpeta src.src/main/resources Picamos 2 veces y crea package.propiertes y struts.xml.
+-En struts.xml. Añadimos el flujo de programa con nueva acción.
+    <action name "login" class="com.actions.UserAction" method="execute">
+        <result name="success">/pagina1.jsp</result>
+        <result name="input">/index.jsp</result>
+    </action>
+-Creamos la pagina1.jsp añadimos el taglib de Struct y mostramos el resultado
+    Bienvenido don <s:property value="user.name"/><br>
+    Ciudad <s:property value="user.ciudad"/>
+-Configuramos el proyecto para que se ejecuta en Apache. Right button\Properties --> Targeted Runtimes y seleccionar el Tomcat.
+- Si no existe el servidor, se puede crear desde windows\Server add Server.
+- Por último, comprobamos la coherencia, botón derecho en proyecto\RUN AS\Maven INSTALL.Esto genera el archivo WAR.
+- Ya se puede correr el proyecto en el servidor apache.

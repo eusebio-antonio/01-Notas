@@ -1,0 +1,6 @@
+Comandos Maven (Desde la carpeta del proyecto)
+//////////////////////////////////////////////
+mvn clean (Bulding)
+mvn install -DskipTests=true
+
+Genera los .jar en home\.m2\com\anfix\Proyectos

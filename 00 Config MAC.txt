@@ -1,0 +1,9 @@
+Ver Todos los ficheros desde Fider
+/**************************************************/
+Open Terminal (click Go > Utilities and double-click the Terminal app)
+
+Now copy and paste both lines listed below into Terminal one at a time, and press Return after each line:
+
+defaults write com.apple.finder AppleShowAllFiles YES
+
+killall Finder

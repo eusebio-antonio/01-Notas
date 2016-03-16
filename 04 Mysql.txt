@@ -1,0 +1,105 @@
+Documentación especifica Mysql
+//////////////////////////////////////////////
+Path de instalación : /usr/local/mysql
+
+* Activar seguridad mysql WIKI:
+mysql -u root mysql
+DELETE FROM user WHERE user = '';
+FLUSH PRIVILEGES;
+ 
+UPDATE mysql.user SET password = password('new_password') WHERE user = 'root';
+FLUSH PRIVILEGES;
+QUIT;
+ 
+Password root Mysql local 1root2
+
+/——————————————————————/
+— Arranque automático Mysql en MAC El Capitan
+http://stackoverflow.com/questions/26476391/how-to-auto-load-mysql-on-startup-on-os-x-yosemite-el-capitan
+
+- Crear fichero: sudo vi /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist
+— Contenido fichero
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>             <string>com.oracle.oss.mysql.mysqld</string>
+    <key>ProcessType</key>       <string>Interactive</string>
+    <key>Disabled</key>          <false/>
+    <key>RunAtLoad</key>         <true/>
+    <key>KeepAlive</key>         <true/>
+    <key>SessionCreate</key>     <true/>
+    <key>LaunchOnlyOnce</key>    <false/>
+    <key>UserName</key>          <string>_mysql</string>
+    <key>GroupName</key>         <string>_mysql</string>
+    <key>ExitTimeOut</key>       <integer>600</integer>
+    <key>Program</key>           <string>/usr/local/mysql/bin/mysqld</string>
+    <key>ProgramArguments</key>
+        <array>
+            <string>/usr/local/mysql/bin/mysqld</string>
+            <string>--user=_mysql</string>
+            <string>--basedir=/usr/local/mysql</string>
+            <string>--datadir=/usr/local/mysql/data</string>
+            <string>--plugin-dir=/usr/local/mysql/lib/plugin</string>
+            <string>--log-error=/usr/local/mysql/data/mysqld.local.err</string>
+            <string>--pid-file=/usr/local/mysql/data/mysqld.local.pid</string>
+            <string>--port=3306</string>
+        </array>
+    <key>WorkingDirectory</key>  <string>/usr/local/mysql</string>
+</dict>
+</plist>
+
+* Nos posicionamos en path
+cd /Library/LaunchDaemons
+* Ejecutamos el comando de arranque automático
+sudo launchctl load -F com.oracle.oss.mysql.mysqld.plist
+
+/——————————————————————/
+
+Creación de usuarios AnfixDb (AnfixDb,AnfixDb0,AnfixDb1,AnfixDb2…AnfixDb5)
+/——————————————————————/
+START TRANSACTION;
+
+CREATE SCHEMA IF NOT EXISTS `AnfixDb` DEFAULT CHARACTER SET='utf8' DEFAULT COLLATE='utf8_bin';
+SHOW WARNINGS;
+
+CREATE USER 'anfixdba'@'localhost' IDENTIFIED BY 'anfixdba';
+SHOW WARNINGS;
+
+GRANT ALL PRIVILEGES ON `AnfixDb`.* TO 'anfixdba'@'localhost' WITH GRANT OPTION;
+SHOW WARNINGS;
+
+FLUSH PRIVILEGES;
+SHOW WARNINGS;
+
+CREATE USER 'anfixuser'@'localhost' IDENTIFIED BY 'anfixuser';
+SHOW WARNINGS;
+
+GRANT CREATE TEMPORARY TABLES, DELETE, EXECUTE, INSERT, LOCK TABLES, SELECT, SHOW VIEW, UPDATE ON `AnfixDb`.* TO 'anfixuser'@'localhost';
+SHOW WARNINGS;
+
+GRANT SELECT ON `mysql`.`proc` TO 'anfixuser'@'localhost';
+SHOW WARNINGS;
+
+FLUSH PRIVILEGES;
+SHOW WARNINGS;
+
+DELIMITER $$
+
+CREATE PROCEDURE `AnfixDb`.UtlResetTransactionAuditTable()
+MODIFIES SQL DATA
+BEGIN
+END$$
+
+CREATE PROCEDURE `AnfixDb`.UtlUpdateSolr()
+MODIFIES SQL DATA
+BEGIN
+END$$
+
+DELIMITER ;
+
+
+COMMIT;
+/——————————————————————/
+

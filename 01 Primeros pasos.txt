@@ -1,5 +1,7 @@
 http://labs.anfix.com/AnfixLearningCenter/# /// Ingeniero del Software/Entorno desarrollo
 
+Configurar java Eclipse preferences: In the Window-Menu select "Preferences". In the Preferences Tree, open the Node "Java" and select "Installed JRE's". Then click on the "Add"-Button in the Panel and select "Standard VM", "Next" and for "JRE Home" click on the "Directory"-Button and select the top level folder of the JDK you want to add.
+
 Versión JAVA ANFIX. 1.7
 Problema privilegios MAC versión capitan.
 https://anfixlabs.atlassian.net/wiki/pages/viewpage.action?pageId=40239311
@@ -8,6 +10,17 @@ sudo ln -s /Library/Java/JavaVirtualMachines/jdk1.7.0_75.jdk/Contents/ CurrentJD
 — Políticas de encriptación de java. Descargar y modificar las de por defecto
 http://www.oracle.com/technetwork/java/javase/downloads/jce-7-download-432124.html
 sudo cp -p *.jar /Library/Java/JavaVirtualMachines/jdk1.7.0_75.jdk/Contents/Home/jre/lib/security
+
+Para que las aplicaciones se ejecuten correctamente desde el contenedor Tomcat es necesario proveerle a dicho contenedor de las librerías que hemos marcado como "provided" en el scope de Maven. 
+
+Las librerías que debemos proporcionarle a Tomcat deben copiarse en la ruta /opt/apps/apache-tomcat-VERSION/lib y son: 
+
+1) anfix-shared-1.0.jar 
+2) ehcache-core-2.4.0.jar 
+3) mysql-connector-java-5.1.13-bin.jar 
+4) slf4j-api-1.6.1.jar 
+5) slf4j-api-1.6.1.jar 
+6) log4j-1.2.16.jar
 
 Descargas
 ————
@@ -71,7 +84,8 @@ https://repository.sonatype.org/content/repositories/forge-sites/m2eclipse-wtp/0
 
 
 
-ORDEN IMPORTACIÓN DE PROYECTOS
+ORDEN IMPORTACIÓN DE PROYECTOS, QUITAR Build automatically
+Quitar validados JAVASCRIPT del los proyectos FRONT END (WAR): Propiedades del proyecto\Builder (Desact. JavaScript Validator y Validator)
 ———————————————————
 
 *anfix-maven-plugin
@@ -92,5 +106,12 @@ ORDEN IMPORTACIÓN DE PROYECTOS
 *anfix-feedback
 *anfix-importer/anfix-importers
 *anfix-learningcenter
+
+
+// Desplegar en local en env.properties de cada proyecto (no todos)
+parallel.threads=6
+parallel.threads.list=0,1,2,3,4,5
+# SQL Scripting
+sql.is.prod=0
 
 

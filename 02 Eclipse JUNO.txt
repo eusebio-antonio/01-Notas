@@ -43,7 +43,6 @@ https://repository.sonatype.org/content/repositories/forge-sites/m2eclipse-wtp/0
 
 
 
-
 Control Git desde Eclipse
 /*****************************************************/
 

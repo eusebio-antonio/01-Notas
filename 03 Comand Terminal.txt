@@ -4,3 +4,6 @@ mvn clean (Bulding)
 mvn install -DskipTests=true
 
 Genera los .jar en home\.m2\com\anfix\Proyectos
+
+
+ chown -h user:group symboliclink // Cambiar la propiedad del fichero ln

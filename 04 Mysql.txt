@@ -2,6 +2,10 @@ Documentación especifica Mysql
 //////////////////////////////////////////////
 Path de instalación : /usr/local/mysql
 
+—/ Arranca para servicio en OS El Capitan
+sudo launchctl load -F /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist
+sudo launchctl unload -F /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist
+
 * Activar seguridad mysql WIKI:
 mysql -u root mysql
 DELETE FROM user WHERE user = '';

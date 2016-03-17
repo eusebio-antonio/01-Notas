@@ -1,0 +1,30 @@
+Pasos importación repositorios ANFIX
+/************************************/
+- Desactivar Build automática.
+- Realizar la importación.
+- Desactivar los builder de validación de Javascript en las propiedades del proyecto.
+- Search/File (en env.properties): sql.is.prod=1 Cambiar a 0 para pasar los test.
+- Search/File (en env.properties): descomentar: parallel.threads=6
+						   parallel.threads.list=0,1,2,3,4,5 NO en anfix-kpi.
+
+**** Estas 2 opciones del fichero env.properties se tienes que revertir cuando se sube a producción.
+
+**** Configurar el fichero test.properties. Se alojara en el $HOME/test.properties
+	- Cambiar 	- eclipse-path=/Volumes/HD2/workspace/repositorio/anfix-API
+		  	- m2-repo=/Users/usemac/.m2/repository
+
+
+- Se hace un Clean/Build de todo el workspace.(Proyect/Clean).
+
+- Pasar los script, creación o update.
+	* Los alojan en el path genérico /opt/data/updateDbAllTest.sh o createDbAllTests.sh pasar como parámetro el 	path del repositorio, de esa manera lee los SQL de los proyectos y los ejecuta.
+
+- La creación/Actualización de la Base de Datos coge los script de los proyectos:
+	Path de script de B.D.: PROYECTOS\src\sql\….(Creates,deltas (modificaciones),routines,triggers).
+	El control del Nº de sql, se realiza atreves de un excel compartido:
+		* https://docs.google.com/spreadsheets/d/13-82IVXm4Qr0w015xxUpaYRpfiOeYleOHo3PW-iXhBY/edit#gid=0
+
+	
+
+
+

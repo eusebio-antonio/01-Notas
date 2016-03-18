@@ -47,6 +47,19 @@ OS,MyDocuments,Core Services,BM,Gestiona,Conta (Minímo)
 Pasar los test de los proyectos en el mismo orden (Tanto JAR como WAR). Path:Proyecto\src\test\java\com\anfix
 
 
+Pruebas unitarias: Genera los xml de salida en opt/tmp/
+
+Lo que realiza es la comparación:
+fichero.json (Entrada del servicio).
+fichero.result.json (Salida del servicio).
+fichero.result.xml (Resultado del test).
+
+Integrar EGIT
+https://anfixlabs.atlassian.net/wiki/display/KB/GIT%3A+Mentoring+y+Primeros+Pasos
+
+
+
+
 
 	
 

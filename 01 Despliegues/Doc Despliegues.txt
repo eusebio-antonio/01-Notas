@@ -1,0 +1,36 @@
+Despliegue BR-68 17/03/2016
+/**************************/
+Entrar a amazon y arrancar la máquina de despliegues: deployer.
+Entramos por ssh a root@deployer (Alta Gateway).
+
+— Los despliegues se encuentran en /opt/deployments/… RAMAS.
+- Comprobar /opt/deployments/instalacion-notes.txt (Parametros de despliegue incluye path lo genera el proceso al desplegar).
+
+Se ejecuta el script de despliegue: /opt/bin/anfix-deploy.sh —> Genera installation.log (Log del despliegue).
+
+El script realiza las siguientes operaciones
+/**************************************/
+- Backups.
+1) Backup B.D.
+2) Backup Tomcats (APPS-01 (10.02.43) y APPS-02 (10.0.2.195, lo suele arrancar) ).
+3) Media files.
+- Todo lo copia mediante API de Amazon al almacenamiento masivo S3.
+
+- Cambia el Loadbalancer de APPS-01 —> APPS-02.
+- Para tomcat APPS1
+- Al ser la B.D. única, pone la ventana de mantenimiento, deja leer pero no permite escribir.
+- Actualiza el APPS1.
+- Cambia el Loadbalancer de APPS-02 —> APPS-01.
+- Para APPS-02 y lo actualiza. APPS-02 se deja parado.
+/**************************************/
+
+
+Servidor backup.anfix.com
+/************************/
+Servidor donde se genera el backup de los documentos de los clientes. También se utiliza como preproducción.
+
+
+
+
+
+

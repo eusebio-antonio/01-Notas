@@ -18,15 +18,17 @@ Pasos importación repositorios ANFIX
 - Activar autoBuild.
 
 - Pasar los script, creación o update.
-	* Los alojan en el path genérico /opt/data/updateDbAllTest.sh o createDbAllTests.sh pasar como parámetro el 	path del repositorio, de esa manera lee los SQL de los proyectos y los ejecuta.
+	* Los alojan en el path genérico /opt/data/updateDbAllTest.sh o createDbAllTests.sh pasar como parámetro el path del repositorio, de esa manera lee los SQL de los proyectos y los ejecuta.
 	EJ). createDbAllTests.sh /Volumes/HD2/useworkspace/repositorio/anfix-API > creacionBD3.log
 
 - La creación/Actualización de la Base de Datos coge los script de los proyectos:
 	Path de script de B.D.: PROYECTOS\src\sql\….(Creates,deltas (modificaciones),routines,triggers).
 	El control del Nº de sql, se realiza atreves de un excel compartido:
 		* https://docs.google.com/spreadsheets/d/13-82IVXm4Qr0w015xxUpaYRpfiOeYleOHo3PW-iXhBY/edit#gid=0
+
 - Crear script build TEST
 ${workspace_loc:/anfix-os/anfix-os-jar/src/test/resources/com/anfix/os/parc/build.xml}
+
 Abrirlo con la vista ANT. Configurar con RUN AS… (para salir la ventana de propiedades)
 	* Seleccionar database_properties (Backup de los datos, para limpiar entre test y test).
 	* Seleccionar dbMetadata_properties (Backup de los datos de contabilidad).

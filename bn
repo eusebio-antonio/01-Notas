@@ -1,0 +1,19 @@
+-- Descomprimir y mover carpeta eclipse a aplicaciones. Fijar en el Dock.
+-- Cambiar parámetros de memoria: Aplicaciones\Carpeta eclipse Ver contenido del paquete eclipse.apps\contents\MAC Os\eclipse.ini
+	* Cambiar JDK path.
+	-vm
+	/Library/Java/JavaVirtualMachines/jdk1.7.0_75.jdk/Contents/Home/bin/java
+	* Memoria.
+	2048m,-XX:MaxPermSize=2048m,-Xms40m,-Xmx4096m
+-- Añadir MVN for eclipse.
+	Los enlaces de los Plugins que hay que instalar ya no son los del vídeo, son los siguientes: 
+	- http://subclipse.tigris.org/update_1.6.x
+
+	- http://repository.sonatype.org/content/repositories/forge-sites/m2e/0.12.1/S/0.12.1.20110112-1712/
+
+	- https://repository.sonatype.org/content/repositories/forge-sites/m2e-extras/0.12.1/N/0.12.1.201011031403/
+
+	- https://repository.sonatype.org/content/repositories/forge-sites/m2eclipse-subclipse/0.12.1/N/0.12.1.201101251309/
+	(para este último hay deshabilitar la opción "Group Items by Category")
+
+	- https://repository.sonatype.org/content/repositories/forge-sites/m2eclipse-wtp/0.12.0/N/0.12.0.201104211003/
